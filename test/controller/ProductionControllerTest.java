@@ -4,8 +4,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -14,7 +16,9 @@ public class ProductionControllerTest {
     @BeforeAll
     static void beforeAll() {
         ProductionController controller = ProductionController.getInstance();
+        controller.addProduction('A', "Aa");
         controller.addProduction('A', "aA");
+        controller.addProduction('A', "a");
         controller.addProduction('A', "AbAcdBeA");
         controller.addProduction('B', "c");
         controller.addProduction('C', "BD");
@@ -43,5 +47,17 @@ public class ProductionControllerTest {
         expected.add('f');
 
         assertArrayEquals(expected.toArray(), ProductionController.getInstance().getValidTerminalSymbols().toArray());
+    }
+
+    @Test
+    void shouldCheckWordWithProductions() {
+        String word = "aa";
+        Queue<Character> wordQueue = new LinkedList<>();
+
+        for (Character character : word.toCharArray()) {
+            wordQueue.add(character);
+        }
+
+
     }
 }

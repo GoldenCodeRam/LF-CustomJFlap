@@ -28,7 +28,7 @@ public class Word {
 					if (terminals.get(j) == word.toCharArray()[i])
 						j = terminals.size() + 1;
 					else {
-						System.out.println("simbolo en palabra no pertenece a la gram·tica");
+						System.out.println("simbolo en palabra no pertenece a la gram√°tica");
 						return;
 					}
 				}
@@ -40,11 +40,5 @@ public class Word {
 
 	public static boolean isLower(String s) {
 		return s.equals(s.toLowerCase());
-	}
-
-	public static void main(String[] args) {
-		System.out.println("ingrese una palabra");
-		Scanner scanner = new Scanner(System.in);
-		new Word(scanner.nextLine());
 	}
 }
