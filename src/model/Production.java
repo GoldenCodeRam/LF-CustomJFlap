@@ -1,10 +1,10 @@
 package model;
 
 public class Production {
-    private char terminalSymbol;
+    private Character terminalSymbol;
     private String production;
 
-    public Production(char terminalSymbol, String production) {
+    public Production(Character terminalSymbol, String production) {
         this.terminalSymbol = terminalSymbol;
         this.production = production;
     }

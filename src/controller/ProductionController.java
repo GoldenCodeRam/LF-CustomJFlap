@@ -19,7 +19,7 @@ public class ProductionController {
     private List<Character> validNonterminalSymbols = new LinkedList<>();
     private List<Production> productions = new LinkedList<>();
 
-    public void addProduction(char nonTerminal, String production) {
+    public void addProduction(Character nonTerminal, String production) {
         this.addNonterminalToValidNonTerminalSymbols(nonTerminal);
         this.addTerminalToValidTerminalSymbols(production);
 
@@ -27,15 +27,15 @@ public class ProductionController {
     }
 
     private void addTerminalToValidTerminalSymbols(String production) {
-        for (char letter : production.toCharArray()) {
+        for (Character letter : production.toCharArray()) {
             if (!this.validNonterminalSymbols.contains(letter) && !this.validTerminalSymbols.contains(letter)) {
                 this.validTerminalSymbols.add(letter);
             }
         }
     }
 
-    private void addNonterminalToValidNonTerminalSymbols(char nonTerminal) {
-        this.validTerminalSymbols.remove(Character.valueOf(nonTerminal));
+    private void addNonterminalToValidNonTerminalSymbols(Character nonTerminal) {
+        this.validTerminalSymbols.remove(nonTerminal);
         if (!this.validNonterminalSymbols.contains(nonTerminal)) {
             this.validNonterminalSymbols.add(nonTerminal);
         }
