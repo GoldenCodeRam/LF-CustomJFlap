@@ -48,7 +48,7 @@ public class PanelAddProd extends JPanel{
 		production.setPreferredSize(new Dimension(200, 40));
 		add(production);
 		
-		addProd = new JButton("Añadir produccion.");
+		addProd = new JButton("AÃ±adir produccion.");
 		addProd.setBackground(Color.GREEN);
 		addProd.setForeground(Color.white);
 		addProd.setActionCommand(Commands.ADD_PRODUCTIONS.toString());

@@ -34,8 +34,8 @@ public class PanelGrammar extends JPanel{
 		symbols = new JPanel();
 		textBanner = new JLabel("GRAMATICAS");
 		banner = new JPanel();
-		terminalSymbol = new PanelGenAdd("<html>&Sigma;:( )</html>", "Añadir simbolo terminal.", Commands.ADD_TERMINAL, listener);
-		nonTerminalSymbol = new PanelGenAdd("V:( )", "Añadir simbolo no terminal", Commands.ADD_NON_TERMINAL, listener);
+		terminalSymbol = new PanelGenAdd("<html>&Sigma;:( )</html>", "AÃ±adir simbolo terminal.", Commands.ADD_TERMINAL, listener);
+		nonTerminalSymbol = new PanelGenAdd("V:( )", "AÃ±adir simbolo no terminal", Commands.ADD_NON_TERMINAL, listener);
 		panelProd = new PanelAddProd(listener);
 		config();
 	}

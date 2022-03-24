@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.Production;
-import view.TestFrame;
 
 public class MainFrame extends JFrame{
 
@@ -32,7 +31,9 @@ public class MainFrame extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		new TestFrame();
+		new MainFrame(actionEvent -> {
+			System.out.println();
+		});
 	}
 	
 	public String getTerminalSymb() {

@@ -11,6 +11,8 @@ public class ProductionController {
         private final static ProductionController INSTANCE = new ProductionController();
     }
 
+    private ProductionController() {}
+
     public static ProductionController getInstance() {
         return Singleton.INSTANCE;
     }
@@ -46,6 +48,10 @@ public class ProductionController {
     }
 
     // Getters and setters
+
+    public List<Production> getProductions() {
+        return productions;
+    }
 
     public List<Character> getValidNonterminalSymbols() {
         return validNonterminalSymbols;

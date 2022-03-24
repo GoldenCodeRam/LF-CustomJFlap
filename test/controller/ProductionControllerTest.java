@@ -1,5 +1,6 @@
 package controller;
 
+import model.Production;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -50,14 +51,60 @@ public class ProductionControllerTest {
     }
 
     @Test
+    void shouldCheckWordWithProductionsReplace() {
+        String word = "aaaaa";
+
+    }
+    // Searches for all the productions that have this character
+    @Test
     void shouldCheckWordWithProductions() {
-        String word = "aa";
+        String word = "aaaaaa";
         Queue<Character> wordQueue = new LinkedList<>();
+        Queue<Production> possibleProductionsQueue = new LinkedList<>();
 
         for (Character character : word.toCharArray()) {
             wordQueue.add(character);
         }
 
+        Character currentCharacter = wordQueue.poll();
 
+        for (Production production : ProductionController.getInstance().getProductions()) {
+            if (production.getProduction().contains(currentCharacter)) {
+                possibleProductionsQueue.add(production);
+            }
+        }
+
+        if (possibleProductionsQueue.isEmpty()) {
+            return;
+        }
+
+        while(!possibleProductionsQueue.isEmpty()) {
+            Production currentProduction = possibleProductionsQueue.poll();
+            Queue<Character> currentSymbols = new LinkedList<>(currentProduction.getProduction());
+
+            while(!currentSymbols.isEmpty()) {
+                Character currentSymbol = currentSymbols.poll();
+                if (currentCharacter == null) {
+                    System.out.println("Found production!");
+                    System.out.println(currentProduction.getProduction());
+                    System.out.println(currentProduction.getTerminalSymbol());
+                    break;
+                }
+
+                if (ProductionController.getInstance().getValidNonterminalSymbols().contains(currentSymbol)) {
+                    for (Production production : ProductionController.getInstance().getProductions()) {
+                        if (production.getTerminalSymbol().equals(currentSymbol) && production.getProduction().get(0).equals(currentCharacter)) {
+                            currentCharacter = wordQueue.poll();
+                            break;
+                        }
+                    }
+                } else {
+                    if (currentSymbol.equals(currentCharacter)) {
+                        currentCharacter = wordQueue.poll();
+                        continue;
+                    }
+                }
+            }
+        }
     }
 }
