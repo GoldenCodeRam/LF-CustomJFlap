@@ -34,17 +34,17 @@ public class GraphicExpressionTree extends JPanel {
 		subtreeSizes.clear();
 		Nodo root = this.miArbol.getRaiz();
 		if (root != null) {
-			calcularTamañoSubarbol(root);
+			calcularTamanoSubarbol(root);
 			calcularPosicion(root, Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
 		}
 	}
 
-	private Dimension calcularTamañoSubarbol(Nodo n) {
+	private Dimension calcularTamanoSubarbol(Nodo n) {
 		if (n == null)
 			return new Dimension(0, 0);
 
-		Dimension ld = calcularTamañoSubarbol(n.getIzq());
-		Dimension rd = calcularTamañoSubarbol(n.getDer());
+		Dimension ld = calcularTamanoSubarbol(n.getIzq());
+		Dimension rd = calcularTamanoSubarbol(n.getDer());
 
 		int h = fm.getHeight() + parent2child + Math.max(ld.height, rd.height);
 		int w = ld.width + child2child + rd.width;

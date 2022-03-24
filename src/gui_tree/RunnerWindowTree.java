@@ -245,12 +245,12 @@ public class RunnerWindowTree extends javax.swing.JFrame {
 
 	private void repintarArbol() {
 		this.jDesktopPane1.removeAll();
-		Rectangle tamaño = this.jInternalFrame2.getBounds();
+		Rectangle tamano = this.jInternalFrame2.getBounds();
 		this.jInternalFrame2 = null;
 		this.jInternalFrame2 = new JInternalFrame("ARBOL DE DERIVACION", true);
 		this.jDesktopPane1.add(this.jInternalFrame2, JLayeredPane.DEFAULT_LAYER);
 		this.jInternalFrame2.setVisible(true);
-		this.jInternalFrame2.setBounds(tamaño);
+		this.jInternalFrame2.setBounds(tamano);
 		this.jInternalFrame2.setEnabled(false);
 		this.jInternalFrame2.add(this.routesTree.getDibujo(), BorderLayout.CENTER);
 	}

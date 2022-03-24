@@ -5,10 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -52,9 +49,34 @@ public class ProductionControllerTest {
 
     @Test
     void shouldCheckWordWithProductionsReplace() {
-        String word = "aaaaa";
+        String word = "aaaa";
+        int index = 0;
+        Deque<Character> symbolDeque = new LinkedList<>();
 
+        while(symbolDeque.size() < word.length()) {
+            addProductionToDeque(word, symbolDeque, index);
+        }
+
+        for (Character character : word.toCharArray()) {
+            for (Production production : )
+        }
     }
+
+    private void addProductionToDeque(String word, Deque<Character> deque, int index) {
+        for (Production production : ProductionController.getInstance().getProductions()) {
+            if (production.getProduction().size() + deque.size() > word.length()) {
+                if (!production.getProduction().contains(word.charAt(index))) {
+                    continue;
+                }
+            }
+
+            for (Character symbol : production.getProduction()) {
+                deque.add(symbol);
+            }
+            break;
+        }
+    }
+
     // Searches for all the productions that have this character
     @Test
     void shouldCheckWordWithProductions() {
