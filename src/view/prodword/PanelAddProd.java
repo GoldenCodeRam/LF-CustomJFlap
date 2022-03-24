@@ -6,9 +6,12 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import model.Production;
 
 public class PanelAddProd extends JPanel{
 
@@ -49,5 +52,10 @@ public class PanelAddProd extends JPanel{
 		addProd.setForeground(Color.white);
 		add(addProd);
 		this.setBorder(new EmptyBorder(30, 30, 30, 30));
+	}
+	
+	public Production getProduction() {
+		Production pr = new Production(text.getText().charAt(0), production.getText());
+		return pr;
 	}
 }

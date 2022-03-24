@@ -3,15 +3,20 @@ package view.prodword;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+import model.Production;
 
 public class PanelGrammar extends JPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel banner;
 	private JLabel textBanner;
 	private PanelGenAdd terminalSymbol;
@@ -19,18 +24,18 @@ public class PanelGrammar extends JPanel{
 	private PanelAddProd panelProd;
 	private JPanel symbols;
 	
-	public PanelGrammar() {
+	public PanelGrammar(ActionListener listener) {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
-		init();
+		init(listener);
 	}
 	
-	public void init() {
+	public void init(ActionListener listener) {
 		symbols = new JPanel();
 		textBanner = new JLabel("GRAMATICAS");
 		banner = new JPanel();
-		terminalSymbol = new PanelGenAdd("<html>&Sigma;:( )</html>", "Añadir simbolo terminal.");
-		nonTerminalSymbol = new PanelGenAdd("V:( )", "Añadir simbolo no terminal");
+		terminalSymbol = new PanelGenAdd("<html>&Sigma;:( )</html>", "Añadir simbolo terminal.", Commands.ADD_TERMINAL, listener);
+		nonTerminalSymbol = new PanelGenAdd("V:( )", "Añadir simbolo no terminal", Commands.ADD_NON_TERMINAL, listener);
 		panelProd = new PanelAddProd();
 		config();
 	}
@@ -51,5 +56,16 @@ public class PanelGrammar extends JPanel{
 		add(panelProd, BorderLayout.SOUTH);
 	}
 	
+	public String getTerminalSymb() {
+		return terminalSymbol.getFieldText();
+	}
+	
+	public String getNonTerminalSymb() {
+		return nonTerminalSymbol.getFieldText();
+	}
+	
+	public Production getProduction() {
+		return panelProd.getProduction();
+	}
 }
 

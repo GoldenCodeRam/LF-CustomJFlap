@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,23 +12,25 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import javafx.scene.layout.Border;
-
 public class PanelGenAdd extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel symbol;
 	private JTextField fieldIn;
 	private JButton addButton;
 	private JPanel panel;
 	
-	public PanelGenAdd(String symbolText, String buttonText) {
+	public PanelGenAdd(String symbolText, String buttonText, Commands command, ActionListener listener) {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout());
 		setBorder(new EmptyBorder(10, 20, 10, 20));
-		init(symbolText, buttonText);
+		init(symbolText, buttonText, command, listener);
 	}
 	
-	public void init(String textSymbol, String textButton) {
+	public void init(String textSymbol, String textButton, Commands command, ActionListener listener) {
 		
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
@@ -40,16 +43,19 @@ public class PanelGenAdd extends JPanel{
 		fieldIn.setBorder(new RoundedBorder(10));
 		fieldIn.setPreferredSize(new Dimension(200, 40));
 		panel.add(fieldIn);
-//		this.setAlignmentX(CENTER_ALIGNMENT);
 		add(panel, BorderLayout.NORTH);
 		
 		addButton = new JButton(textButton);
 		addButton.setAlignmentX(CENTER_ALIGNMENT);
-//		addButton.setActionCommand();
-//		addButton.addActionListener();
+		addButton.setActionCommand(command.toString());
+		addButton.addActionListener(listener);
 		addButton.setBackground(Color.GREEN);
 		addButton.setForeground(Color.WHITE);
 		add(addButton, BorderLayout.SOUTH);
+	}
+	
+	public String getFieldText() {
+		return fieldIn.getText();
 	}
 
 }
