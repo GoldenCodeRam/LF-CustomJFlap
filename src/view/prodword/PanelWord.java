@@ -1,4 +1,4 @@
-package view;
+package view.prodword;
 
 import javax.swing.JPanel;
 
