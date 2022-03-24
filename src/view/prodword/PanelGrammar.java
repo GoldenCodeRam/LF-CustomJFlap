@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -17,12 +18,13 @@ public class PanelGrammar extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel banner;
-	private JLabel textBanner;
+	private PanelBanner banner;
 	private PanelGenAdd terminalSymbol;
 	private PanelGenAdd nonTerminalSymbol;
 	private PanelAddProd panelProd;
 	private JPanel symbols;
+	private JPanel panelCenter;
+	private PanelMenu menu;
 	
 	public PanelGrammar(ActionListener listener) {
 		setBackground(Color.WHITE);
@@ -31,9 +33,10 @@ public class PanelGrammar extends JPanel{
 	}
 	
 	public void init(ActionListener listener) {
+		menu = new PanelMenu(listener);
 		symbols = new JPanel();
-		textBanner = new JLabel("GRAMATICAS");
-		banner = new JPanel();
+		panelCenter = new JPanel();
+		banner = new PanelBanner("GRAMATICAS");
 		terminalSymbol = new PanelGenAdd("<html>&Sigma;:( )</html>", "Añadir simbolo terminal.", Commands.ADD_TERMINAL, listener);
 		nonTerminalSymbol = new PanelGenAdd("V:( )", "Añadir simbolo no terminal", Commands.ADD_NON_TERMINAL, listener);
 		panelProd = new PanelAddProd(listener);
@@ -41,27 +44,32 @@ public class PanelGrammar extends JPanel{
 	}
 	
 	public void config() {
-		banner.setBackground(Color.GREEN);
-		textBanner.setForeground(Color.WHITE);
-		textBanner.setFont(new Font("Serif", Font.BOLD, 60));
-		banner.add(textBanner);
+		
+		panelCenter.setBackground(Color.WHITE);
+		panelCenter.setLayout(new BorderLayout());
+		
 		add(banner, BorderLayout.NORTH);
 		
 		symbols.setBackground(Color.white);
 		symbols.add(terminalSymbol);
 		symbols.add(nonTerminalSymbol);
 		symbols.setBorder(new EmptyBorder(10, 10, 10, 10));
-		add(symbols, BorderLayout.CENTER);
+		panelCenter.add(symbols, BorderLayout.CENTER);
 		
-		add(panelProd, BorderLayout.SOUTH);
+		panelCenter.add(panelProd, BorderLayout.SOUTH);
+		
+		add(panelCenter, BorderLayout.CENTER);
+		add(menu, BorderLayout.SOUTH);
 	}
 	
 	public String getTerminalSymb() {
-		return terminalSymbol.getFieldText();
+		String terminal = terminalSymbol.getFieldText();
+		return terminal;
 	}
 	
-	public String getNonTerminalSymb() {
-		return nonTerminalSymbol.getFieldText();
+	public char getNonTerminalSymb() {
+		char nonTerminal = nonTerminalSymbol.getFieldText().charAt(0);
+		return nonTerminal;
 	}
 	
 	public Production getProduction() {

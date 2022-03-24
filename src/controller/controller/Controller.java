@@ -34,6 +34,15 @@ public class Controller implements ActionListener{
 			prodController.addProduction(frame.getProduction());
 			JOptionPane.showMessageDialog(frame, "La produccion se ha agregado con exito");
 			break;
+		case MENU_GRAMMAR:
+			this.frame.changePanelToGrammar();
+			break;
+		case MENU_VALIDATE_LANGUAGE:
+			this.frame.changePanelToValidate();
+			break;
+		case VALIDATE_LANGUAGE:
+			JOptionPane.showMessageDialog(frame, "El lenguaje se esta validando por favor espere...");
+			break;
 		default:
 			break;
 		}

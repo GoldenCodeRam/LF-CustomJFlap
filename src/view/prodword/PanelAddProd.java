@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +15,10 @@ import model.Production;
 
 public class PanelAddProd extends JPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel title;
 	private JLabel arrow;
 	private JTextField text;
@@ -53,6 +56,8 @@ public class PanelAddProd extends JPanel{
 		addProd.setForeground(Color.white);
 		addProd.setActionCommand(Commands.ADD_PRODUCTIONS.toString());
 		addProd.addActionListener(listener);
+		addProd.setFocusable(false);
+		addProd.setBorder(new RoundedBorder(10));
 		add(addProd);
 		this.setBorder(new EmptyBorder(30, 30, 30, 30));
 	}

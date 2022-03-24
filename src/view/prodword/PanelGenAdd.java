@@ -43,6 +43,7 @@ public class PanelGenAdd extends JPanel{
 		fieldIn.setBorder(new RoundedBorder(10));
 		fieldIn.setPreferredSize(new Dimension(200, 40));
 		panel.add(fieldIn);
+		panel.setBorder(new EmptyBorder(20, 20, 20, 20));
 		add(panel, BorderLayout.NORTH);
 		
 		addButton = new JButton(textButton);
@@ -51,15 +52,24 @@ public class PanelGenAdd extends JPanel{
 		addButton.addActionListener(listener);
 		addButton.setBackground(Color.GREEN);
 		addButton.setForeground(Color.WHITE);
+		addButton.setFocusable(false);
+		addButton.setBorder(new RoundedBorder(10));
 		add(addButton, BorderLayout.SOUTH);
 	}
 	
 	public String getFieldText() {
 		String text = fieldIn.getText();
-		fieldIn.setText("");
-		repaint(); 
-		revalidate();
 		return text;
+	}
+	
+	public void clear() {
+		fieldIn.setText("");
+		this.repaint(); 
+		this.revalidate();
+	}
+	
+	public void setText(String text) {
+		fieldIn.setText(text);
 	}
 
 }
