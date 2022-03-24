@@ -55,7 +55,11 @@ public class PanelGenAdd extends JPanel{
 	}
 	
 	public String getFieldText() {
-		return fieldIn.getText();
+		String text = fieldIn.getText();
+		fieldIn.setText("");
+		repaint(); 
+		revalidate();
+		return text;
 	}
 
 }

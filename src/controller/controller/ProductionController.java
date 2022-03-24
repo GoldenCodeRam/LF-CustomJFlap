@@ -25,6 +25,10 @@ public class ProductionController {
 
         this.productions.add(new Production(nonTerminal, production));
     }
+    
+    public void addProduction(Production production) {
+    	this.productions.add(production);
+    }
 
     private void addTerminalToValidTerminalSymbols(String production) {
         for (char letter : production.toCharArray()) {

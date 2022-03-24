@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.Production;
 import view.TestFrame;
 
 public class MainFrame extends JFrame{
@@ -34,5 +35,16 @@ public class MainFrame extends JFrame{
 		new TestFrame();
 	}
 	
+	public String getTerminalSymb() {
+		return panel.getTerminalSymb();
+	}
+	
+	public String getNonTerminalSymb() {
+		return panel.getNonTerminalSymb();
+	}
+	
+	public Production getProduction() {
+		return panel.getProduction();
+	}
 	
 }

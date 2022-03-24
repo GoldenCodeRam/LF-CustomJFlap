@@ -26,7 +26,7 @@ public class TestFrame extends JFrame{
 	
 	private void init() {
 		JPanel prin = new JPanel();
-		panel = new PanelGrammar();
+//		panel = new PanelGrammar();
 		prin.add(panel);
 		
 		this.setContentPane(prin);

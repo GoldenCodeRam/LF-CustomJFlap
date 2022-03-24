@@ -11,10 +11,12 @@ import view.prodword.MainFrame;
 public class Controller implements ActionListener{
 	
 	private MainFrame frame;
+	private ProductionController prodController;
 	
 	public Controller() {
 		
 		frame = new MainFrame(this);
+		prodController = new ProductionController();
 		
 	}
 
@@ -29,11 +31,16 @@ public class Controller implements ActionListener{
 			JOptionPane.showMessageDialog(frame, "El simbolo no terminal se ha agregado con exito");
 			break;
 		case ADD_PRODUCTIONS:
+			prodController.addProduction(frame.getProduction());
 			JOptionPane.showMessageDialog(frame, "La produccion se ha agregado con exito");
 			break;
 		default:
 			break;
 		}
+	}
+	
+	public static void main(String[] args) {
+		new Controller();
 	}
 
 }
